@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Loadstring</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="main-content">
+    <h1 style="text-align:center; color:#66d4ff; margin-bottom:32px;">Gerador de Loadstring</h1>
+    <div class="loadstring-box">
+      <label for="site-url">Cole o link do seu script/site:</label>
+      <input type="text" id="site-url" placeholder="https://seusite.com/seuscript.lua" style="width:100%;padding:8px;margin:8px 0;">
+      <button id="generate-btn" class="download-btn" style="width:100%;margin-bottom:12px;"><i class="fas fa-magic"></i> Gerar Loadstring</button>
+      <label for="result">Loadstring gerado:</label>
+      <textarea id="result" rows="3" style="width:100%;padding:8px;" readonly></textarea>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="index.html" class="social-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('generate-btn').onclick = function() {
+      var url = document.getElementById('site-url').value.trim();
+      var result = document.getElementById('result');
+      if(url) {
+        result.value = `loadstring(game:HttpGet(\"${url}\"))()`;
+      } else {
+        result.value = '';
+        alert('Por favor, insira um link válido!');
+      }
+    };
+  </script>
+</body>
+</html>

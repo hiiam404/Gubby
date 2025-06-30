@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swift Sync Scripts</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      /* Bolhas animadas no fundo */
+      background: linear-gradient(120deg, #181e24 60%, #2a0a2a 100%);
+      overflow-x: hidden;
+    }
+    .bubbles {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      background: radial-gradient(circle at 30% 30%, #66d4ff 60%, #2a0a2a 100%);
+      animation: float 16s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-120vh) scale(1.2); }
+    }
+    .main-content { position: relative; z-index: 1; }
+    .script-options-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 38px;
+    }
+    .script-option-card {
+      background: #232a32;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px 0 #2e8dbd33;
+      padding: 28px 18px 22px 18px;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.18s;
+      cursor: pointer;
+      border: 2px solid #232a32;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .script-option-card:hover, .script-option-card:focus {
+      box-shadow: 0 0 24px 0 #ff2e8d55;
+      border: 2px solid #ff2e8d;
+      transform: translateY(-3px) scale(1.04);
+    }
+    .script-option-card.selected {
+      border: 2.5px solid #ff2e8d;
+      box-shadow: 0 0 0 2px #ff2e8d55;
+    }
+    .script-option-card i {
+      font-size: 2.2rem;
+      color: #ff2e8d;
+      margin-bottom: 12px;
+    }
+    .script-option-card h2 {
+      color: #66d4ff;
+      font-size: 1.25rem;
+      margin: 0 0 8px 0;
+    }
+    .script-option-card p {
+      color: #c6daee;
+      font-size: 1.01rem;
+      margin: 0;
+      text-align: center;
+    }
+    .script-box {
+      background: #232a32;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px 0 #2e8dbd33;
+      padding: 24px 18px 18px 18px;
+      margin: 0 auto 32px auto;
+      max-width: 480px;
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+    .script-box.active { display: flex; }
+    .script-box label {
+      color: #ff2e8d;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .script-box textarea {
+      width: 100%;
+      min-height: 60px;
+      background: #181e24;
+      color: #fff;
+      border: 1.5px solid #66d4ff;
+      border-radius: 7px;
+      padding: 10px;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      resize: none;
+    }
+    .copy-btn {
+      background: linear-gradient(90deg, #66d4ff 70%, #ff2e8d 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 22px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: outline 0.2s, box-shadow 0.2s, border 0.2s;
+      outline: none;
+      align-self: flex-end;
+    }
+    .copy-btn:active, .copy-btn.active {
+      outline: 2.5px solid #ff2e8d;
+      box-shadow: 0 0 0 3px #ff2e8d55;
+    }
+    .copy-btn:hover, .copy-btn:focus {
+      opacity: .94;
+    }
+    @media (max-width: 750px) {
+      .script-options-grid { flex-direction: column; gap: 18px; }
+      .main-content { max-width: 98vw; }
+      .script-box { max-width: 98vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bubbles"></div>
+  <div class="main-content">
+    <h1 style="text-align:center; color:#66d4ff; margin-bottom:32px;">Swift Sync Scripts</h1>
+    <div class="script-options-grid">
+      <div class="script-option-card" id="oree-btn">
+        <i class="fas fa-robot"></i>
+        <h2>oRee Scripter X Brainrot</h2>
+        <p>Script universal SSXBr</p>
+      </div>
+      <div class="script-option-card">
+        <i class="fas fa-brain"></i>
+        <h2>Brainrot</h2>
+        <p>Em breve...</p>
+      </div>
+      <div class="script-option-card">
+        <i class="fas fa-code"></i>
+        <h2>Outro Script</h2>
+        <p>Em breve...</p>
+      </div>
+    </div>
+    <div class="script-box" id="oree-box">
+      <label for="oree-script">Script oRee Scripter X Brainrot:</label>
+      <textarea id="oree-script" readonly>loadstring(game:HttpGet("https://oreofdev.github.io/Sw1ftSync/Raw/SSXBr/"))()</textarea>
+      <button class="copy-btn" id="copy-oree">Copiar</button>
+    </div>
+    <div class="socials-bar">
+      <a class="social-btn" href="index.html"><i class="fas fa-arrow-left"></i> Voltar</a>
+      <a class="social-btn" href="https://www.youtube.com/@Isagiyoichi-w4l" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <a class="social-btn" href="https://discord.gg/Zj7ruHWk" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+      <a class="social-btn" href="https://github.com/hiiam404" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
+  <script>
+    // Bolhas animadas
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      const size = Math.random() * 80 + 40;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.bottom = `-100px`;
+      bubble.style.background = `radial-gradient(circle at 30% 30%, #66d4ff 60%, #ff2e8d 100%)`;
+      bubble.style.animationDuration = `${12 + Math.random() * 10}s`;
+      document.querySelector('.bubbles').appendChild(bubble);
+      setTimeout(() => bubble.remove(), 22000);
+    }
+    setInterval(createBubble, 900);
+    for(let i=0;i<8;i++) createBubble();
+
+    // Mostrar box do oRee Scripter X Brainrot
+    const oreeBtn = document.getElementById('oree-btn');
+    const oreeBox = document.getElementById('oree-box');
+    oreeBtn.addEventListener('click', function() {
+      oreeBox.classList.toggle('active');
+      oreeBtn.classList.toggle('selected');
+    });
+    // Copiar script
+    document.getElementById('copy-oree').onclick = function() {
+      const textarea = document.getElementById('oree-script');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      this.textContent = 'Copiado!';
+      setTimeout(()=>{ this.textContent = 'Copiar'; }, 1200);
+    };
+  </script>
+</body>
+</html>
