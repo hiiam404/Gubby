@@ -150,16 +150,21 @@
         <h2>Brainrot</h2>
         <p>Em breve...</p>
       </div>
-      <div class="script-option-card">
+      <div class="script-option-card" id="outro-btn">
         <i class="fas fa-code"></i>
         <h2>Outro Script</h2>
-        <p>Em breve...</p>
+        <p>Clique para ver o script</p>
       </div>
     </div>
     <div class="script-box" id="oree-box">
       <label for="oree-script">Script oRee Scripter X Brainrot:</label>
       <textarea id="oree-script" readonly>loadstring(game:HttpGet("https://oreofdev.github.io/Sw1ftSync/Raw/SSXBr/"))()</textarea>
       <button class="copy-btn" id="copy-oree">Copiar</button>
+    </div>
+    <div class="script-box" id="outro-box">
+      <label for="outro-script">Script Outro:</label>
+      <textarea id="outro-script" readonly>loadstring(game:HttpGet("https://pastefy.app/ZNP2L4hG/raw"))()</textarea>
+      <button class="copy-btn" id="copy-outro">Copiar</button>
     </div>
     <div class="socials-bar">
       <a class="social-btn" href="index.html"><i class="fas fa-arrow-left"></i> Voltar</a>
@@ -192,10 +197,32 @@
     oreeBtn.addEventListener('click', function() {
       oreeBox.classList.toggle('active');
       oreeBtn.classList.toggle('selected');
+      // Esconde o outro box se estiver aberto
+      outroBox.classList.remove('active');
+      outroBtn.classList.remove('selected');
     });
-    // Copiar script
+    // Mostrar box do Outro Script
+    const outroBtn = document.getElementById('outro-btn');
+    const outroBox = document.getElementById('outro-box');
+    outroBtn.addEventListener('click', function() {
+      outroBox.classList.toggle('active');
+      outroBtn.classList.toggle('selected');
+      // Esconde o outro box se estiver aberto
+      oreeBox.classList.remove('active');
+      oreeBtn.classList.remove('selected');
+    });
+    // Copiar script oRee
     document.getElementById('copy-oree').onclick = function() {
       const textarea = document.getElementById('oree-script');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      this.textContent = 'Copiado!';
+      setTimeout(()=>{ this.textContent = 'Copiar'; }, 1200);
+    };
+    // Copiar script Outro
+    document.getElementById('copy-outro').onclick = function() {
+      const textarea = document.getElementById('outro-script');
       textarea.select();
       textarea.setSelectionRange(0, 99999);
       document.execCommand('copy');
