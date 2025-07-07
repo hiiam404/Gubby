@@ -1,0 +1,51 @@
+/* filepath: c:\Users\frfrf\Desktop\Gubby site\style.css */
+body {
+  background: #181e24;
+  margin: 0;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+h1, h2, h3 {
+  color: #66d4ff;
+}
+
+p {
+  color: #c6daee;
+  font-size: 1rem;
+  margin: 0 0 16px 0;
+}
+
+a {
+  color: #66d4ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #b0ecff;
+}
+
+.button {
+  background: linear-gradient(90deg, #66d4ff 70%, #3454e3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #232a32;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
