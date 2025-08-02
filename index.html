@@ -8,15 +8,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      background: linear-gradient(135deg, #10131a 0%, #1a2233 100%);
+      background: linear-gradient(135deg, #181f1a 0%, #2a3d2d 100%);
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
     .main-content {
-      max-width: 800px;
+      max-width: 900px;
       margin: 48px auto;
-      background: #181c24;
+      background: #1a231a;
       border-radius: 18px;
       box-shadow: 0 4px 24px #0006;
       padding: 40px 32px 32px 32px;
@@ -30,31 +30,31 @@
     }
     .header-modern .icon {
       font-size: 3rem;
-      color: #66d4ff;
+      color: #ff4d4d;
       animation: pulse 1.5s infinite alternate;
-      filter: drop-shadow(0 0 8px #66d4ff88);
+      filter: drop-shadow(0 0 8px #ff4d4d88);
     }
     @keyframes pulse {
       to {
-        color: #1e90ff;
-        filter: drop-shadow(0 0 16px #1e90ffcc);
+        color: #ff1e1e;
+        filter: drop-shadow(0 0 16px #ff1e1ecc);
       }
     }
     .header-modern .title {
       font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: 2px;
-      background: linear-gradient(90deg, #66d4ff 0%, #1e90ff 100%);
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      text-shadow: 0 2px 16px #1e90ff33;
+      text-shadow: 0 2px 16px #ff4d4d33;
       margin: 0;
       padding: 0;
     }
     .header-modern .subtitle {
-      color: #b3e0ff;
+      color: #b3ffb3;
       font-size: 1.1rem;
       margin-top: 2px;
       margin-bottom: 0;
@@ -62,95 +62,98 @@
       letter-spacing: 1px;
       text-align: center;
     }
-    .options-grid {
+    .links-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
       margin-bottom: 36px;
     }
-    .option-card {
-      background: linear-gradient(135deg, #151a22 60%, #1e90ff11 100%);
+    .link-card {
+      background: linear-gradient(135deg, #1a231a 60%, #ff4d4d11 100%);
       border-radius: 14px;
       box-shadow: 0 2px 12px #0003;
       padding: 28px 18px 22px 18px;
       text-align: center;
-      color: #b3e0ff;
+      color: #b3ffb3;
       text-decoration: none;
+      border: 1.5px solid #223c2c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
-      border: 1.5px solid #222c3c;
-      position: relative;
-      overflow: hidden;
+      min-height: 180px;
+      justify-content: flex-start;
     }
-    .option-card:hover {
+    .link-card:hover {
       transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 24px #1e90ff44;
-      background: linear-gradient(135deg, #181c24 60%, #66d4ff22 100%);
-      border-color: #66d4ff;
+      box-shadow: 0 6px 24px #ff4d4d44;
+      background: linear-gradient(135deg, #1a231a 60%, #ff4d4d22 100%);
+      border-color: #ff4d4d;
       color: #fff;
     }
-    .option-card i {
+    .link-card i {
       font-size: 2.2rem;
       margin-bottom: 10px;
-      color: #66d4ff;
+      color: #ff4d4d;
       transition: color 0.2s;
     }
-    .option-card:hover i {
-      color: #1e90ff;
-      filter: drop-shadow(0 0 8px #66d4ff88);
+    .link-card:hover i {
+      color: #2ecc40;
+      filter: drop-shadow(0 0 8px #2ecc4088);
     }
-    .option-card h2 {
-      margin: 10px 0 6px 0;
-      font-size: 1.3rem;
+    .link-card h2 {
+      margin: 0 0 8px 0;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: inherit;
+      color: #fff;
       letter-spacing: 1px;
     }
-    .option-card p {
+    .link-card p {
       font-size: 1em;
-      color: #b3e0ff;
-      margin: 0;
+      color: #b3ffb3;
+      margin: 0 0 18px 0;
     }
-    .about-me {
-      background: #13161d;
-      padding: 24px;
-      border-radius: 16px;
-      margin: 32px auto 0 auto;
-      box-shadow: 0 2px 8px #0002;
-      max-width: 600px;
-    }
-    .about-me h2 {
-      color: #66d4ff;
-      margin-top: 0;
-    }
-    .about-me p {
-      color: #fff;
-      line-height: 1.6;
-    }
-    .socials-bar {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-    .social-btn {
-      background: linear-gradient(90deg, #66d4ff 0%, #1e90ff 100%);
+    .link-card .go-btn {
+      margin-top: auto;
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
       color: #181c24;
-      padding: 10px 22px;
+      padding: 10px 0;
       border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 1.05em;
+      font-size: 1.08em;
+      width: 90%;
+      max-width: 180px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       box-shadow: 0 2px 8px #0002;
       transition: background 0.2s, color 0.2s;
+      border: none;
+      cursor: pointer;
     }
-    .social-btn:hover {
-      background: linear-gradient(90deg, #1e90ff 0%, #66d4ff 100%);
+    .link-card .go-btn:hover {
+      background: linear-gradient(90deg, #2ecc40 0%, #ff4d4d 100%);
       color: #fff;
       text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        padding: 20px 4vw 24px 4vw;
+      }
+      .link-card {
+        min-height: 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .links-list {
+        grid-template-columns: 1fr;
+      }
+      .main-content {
+        padding: 10px 0 10px 0;
+      }
     }
   </style>
 </head>
@@ -158,44 +161,39 @@
   <canvas id="bg-balls"></canvas>
   <div class="main-content">
     <div class="header-modern">
-      <span class="icon"><i class="fas fa-cube"></i></span>
+      <span class="icon"><i class="fas fa-home"></i></span>
       <h1 class="title">Gubby Site</h1>
-      <span class="subtitle">Tudo sobre Minecraft, Roblox e programação em um só lugar!</span>
+      <span class="subtitle">Tudo para Roblox em um só lugar!</span>
     </div>
-    <div class="options-grid">
-      <a class="option-card" id="minecraft-option" href="minecraft page/servidor/">
-        <i class="fas fa-cube"></i>
-        <h2>Minecraft</h2>
-        <p>Ir para página do servidor Minecraft</p>
-      </a>
-      <a class="option-card" id="script-option" href="script/">
-        <i class="fas fa-code"></i>
-        <h2>Script</h2>
-        <p>Scripts exclusivos para Roblox.</p>
-      </a>
-      <a class="option-card" id="executor-option" href="executor/">
+    <div class="links-list">
+      <a class="link-card" href="executor/index.html">
         <i class="fas fa-terminal"></i>
-        <h2>Executor</h2>
-        <p>Baixe executores para rodar scripts.</p>
+        <h2>Executores</h2>
+        <p>Baixe executores seguros e atualizados para rodar scripts no Roblox.</p>
+        <span class="go-btn"><i class="fas fa-arrow-right"></i> Acessar</span>
       </a>
-      <a class="option-card" id="loadstring-option" href="loadstring/">
+      <a class="link-card" href="Script/index.html">
+        <i class="fas fa-code"></i>
+        <h2>Scripts</h2>
+        <p>Scripts exclusivos e prontos para copiar e usar no Roblox.</p>
+        <span class="go-btn"><i class="fas fa-arrow-right"></i> Acessar</span>
+      </a>
+      <a class="link-card" href="loadstring/index.html">
         <i class="fas fa-link"></i>
         <h2>Loadstrings</h2>
-        <p>Copie loadstrings prontos para uso.</p>
+        <p>Gere ou copie loadstrings para usar em seus executores.</p>
+        <span class="go-btn"><i class="fas fa-arrow-right"></i> Acessar</span>
       </a>
-    </div>
-    <div class="about-me">
-      <h2>Sobre mim</h2>
-      <p>Olá, eu sou Gubby ou Null e sou fã de programação e de assistir pessoas que começaram pela primeira vez no mundo das programações.</p>
-    </div>
-    <div class="socials-bar">
-      <a class="social-btn" href="https://www.youtube.com/@Isagiyoichi-w4l" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-      <a class="social-btn" href="https://discord.gg/RgF9t7Ax" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-      <a class="social-btn" href="https://github.com/hiiam404" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a class="link-card" href="minecraft/index.html">
+        <i class="fas fa-cube"></i>
+        <h2>Minecraft</h2>
+        <p>Desativada e cancelada</p>
+        <span class="go-btn"><i class="fas fa-arrow-right"></i> Acessar</span>
+      </a>
     </div>
   </div>
   <script>
-    // Fundo animado de bolinhas azuis
+    // Fundo animado de bolinhas vermelhas e verdes
     const canvas = document.getElementById('bg-balls');
     const ctx = canvas.getContext('2d');
     let balls = [];
@@ -210,13 +208,15 @@
     function createBalls() {
       balls = [];
       for (let i = 0; i < 32; i++) {
+        const isRed = Math.random() > 0.5;
         balls.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           r: 8 + Math.random() * 12,
           dx: (Math.random() - 0.5) * 0.5,
           dy: (Math.random() - 0.5) * 0.5,
-          alpha: 0.15 + Math.random() * 0.25
+          alpha: 0.18 + Math.random() * 0.22,
+          color: isRed ? "rgba(255,77,77," : "rgba(46,204,64,"
         });
       }
     }
@@ -228,13 +228,12 @@
       for (const b of balls) {
         ctx.beginPath();
         ctx.arc(b.x, b.y, b.r, 0, 2 * Math.PI);
-        ctx.fillStyle = `rgba(102, 212, 255, ${b.alpha})`;
-        ctx.shadowColor = "#66d4ff";
+        ctx.fillStyle = b.color + b.alpha + ")";
+        ctx.shadowColor = b.color.replace("rgba(", "rgba(").replace(",", ",") + "1)";
         ctx.shadowBlur = 16;
         ctx.fill();
         b.x += b.dx;
         b.y += b.dy;
-        // Rebote nas bordas
         if (b.x < -b.r) b.x = canvas.width + b.r;
         if (b.x > canvas.width + b.r) b.x = -b.r;
         if (b.y < -b.r) b.y = canvas.height + b.r;
@@ -244,7 +243,6 @@
     }
     animate();
 
-    // Canvas fixo no fundo
     canvas.style.position = "fixed";
     canvas.style.top = 0;
     canvas.style.left = 0;
