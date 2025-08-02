@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      background: linear-gradient(135deg, #10131a 0%, #1a2233 100%);
+      background: linear-gradient(135deg, #181f1a 0%, #2a3d2d 100%);
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -16,7 +16,7 @@
     .main-content {
       max-width: 1100px;
       margin: 48px auto;
-      background: #181c24;
+      background: #1a231a;
       border-radius: 18px;
       box-shadow: 0 4px 24px #0006;
       padding: 40px 32px 32px 32px;
@@ -30,31 +30,31 @@
     }
     .header-modern .icon {
       font-size: 3rem;
-      color: #66d4ff;
+      color: #ff4d4d;
       animation: pulse 1.5s infinite alternate;
-      filter: drop-shadow(0 0 8px #66d4ff88);
+      filter: drop-shadow(0 0 8px #ff4d4d88);
     }
     @keyframes pulse {
       to {
-        color: #1e90ff;
-        filter: drop-shadow(0 0 16px #1e90ffcc);
+        color: #ff1e1e;
+        filter: drop-shadow(0 0 16px #ff1e1ecc);
       }
     }
     .header-modern .title {
       font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: 2px;
-      background: linear-gradient(90deg, #66d4ff 0%, #1e90ff 100%);
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      text-shadow: 0 2px 16px #1e90ff33;
+      text-shadow: 0 2px 16px #ff4d4d33;
       margin: 0;
       padding: 0;
     }
     .header-modern .subtitle {
-      color: #b3e0ff;
+      color: #b3ffb3;
       font-size: 1.1rem;
       margin-top: 2px;
       margin-bottom: 0;
@@ -70,14 +70,14 @@
       margin-bottom: 36px;
     }
     .executor-card {
-      background: linear-gradient(135deg, #151a22 60%, #1e90ff11 100%);
+      background: linear-gradient(135deg, #1a231a 60%, #ff4d4d11 100%);
       border-radius: 14px;
       box-shadow: 0 2px 12px #0003;
       padding: 28px 18px 22px 18px;
       text-align: center;
-      color: #b3e0ff;
+      color: #b3ffb3;
       text-decoration: none;
-      border: 1.5px solid #222c3c;
+      border: 1.5px solid #223c2c;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -87,20 +87,20 @@
     }
     .executor-card:hover {
       transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 24px #1e90ff44;
-      background: linear-gradient(135deg, #181c24 60%, #66d4ff22 100%);
-      border-color: #66d4ff;
+      box-shadow: 0 6px 24px #ff4d4d44;
+      background: linear-gradient(135deg, #1a231a 60%, #ff4d4d22 100%);
+      border-color: #ff4d4d;
       color: #fff;
     }
     .executor-card i {
       font-size: 2.5rem;
       margin-bottom: 14px;
-      color: #66d4ff;
+      color: #ff4d4d;
       transition: color 0.2s;
     }
     .executor-card:hover i {
-      color: #1e90ff;
-      filter: drop-shadow(0 0 8px #66d4ff88);
+      color: #2ecc40;
+      filter: drop-shadow(0 0 8px #2ecc4088);
     }
     .executor-card h2 {
       margin: 0 0 8px 0;
@@ -111,19 +111,19 @@
     }
     .executor-card small {
       display: block;
-      color: #b3e0ff;
+      color: #b3ffb3;
       font-weight: 400;
       margin-bottom: 6px;
       font-size: 0.98em;
     }
     .executor-card p {
       font-size: 1em;
-      color: #b3e0ff;
+      color: #b3ffb3;
       margin: 0 0 18px 0;
     }
     .executor-card a.download-btn {
       margin-top: auto;
-      background: linear-gradient(90deg, #66d4ff 0%, #1e90ff 100%);
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
       color: #181c24;
       padding: 12px 0;
       border-radius: 8px;
@@ -140,18 +140,18 @@
       transition: background 0.2s, color 0.2s;
     }
     .executor-card a.download-btn:hover {
-      background: linear-gradient(90deg, #1e90ff 0%, #66d4ff 100%);
+      background: linear-gradient(90deg, #2ecc40 0%, #ff4d4d 100%);
       color: #fff;
       text-decoration: underline;
     }
     .instructions {
-      background: #13161d;
+      background: #18281a;
       padding: 24px;
       border-radius: 16px;
       margin: 32px auto 0 auto;
       box-shadow: 0 2px 8px #0002;
       max-width: 600px;
-      color: #b3e0ff;
+      color: #b3ffb3;
       font-size: 1.05em;
       line-height: 1.6;
     }
@@ -159,13 +159,13 @@
       display: block;
       text-align: center;
       margin-top: 32px;
-      color: #66d4ff;
+      color: #ff4d4d;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
     a.back-link:hover {
-      color: #1e90ff;
+      color: #2ecc40;
       text-decoration: underline;
     }
     @media (max-width: 900px) {
@@ -234,7 +234,7 @@
     <a class="back-link" href="../index.html"><i class="fas fa-arrow-left"></i> Voltar para o início</a>
   </div>
   <script>
-    // Fundo animado de bolinhas azuis
+    // Fundo animado de bolinhas vermelhas e verdes
     const canvas = document.getElementById('bg-balls');
     const ctx = canvas.getContext('2d');
     let balls = [];
@@ -249,13 +249,15 @@
     function createBalls() {
       balls = [];
       for (let i = 0; i < 32; i++) {
+        const isRed = Math.random() > 0.5;
         balls.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           r: 8 + Math.random() * 12,
           dx: (Math.random() - 0.5) * 0.5,
           dy: (Math.random() - 0.5) * 0.5,
-          alpha: 0.15 + Math.random() * 0.25
+          alpha: 0.18 + Math.random() * 0.22,
+          color: isRed ? "rgba(255,77,77," : "rgba(46,204,64,"
         });
       }
     }
@@ -267,8 +269,8 @@
       for (const b of balls) {
         ctx.beginPath();
         ctx.arc(b.x, b.y, b.r, 0, 2 * Math.PI);
-        ctx.fillStyle = `rgba(102, 212, 255, ${b.alpha})`;
-        ctx.shadowColor = "#66d4ff";
+        ctx.fillStyle = b.color + b.alpha + ")";
+        ctx.shadowColor = b.color.replace("rgba(", "rgba(").replace(",", ",") + "1)";
         ctx.shadowBlur = 16;
         ctx.fill();
         b.x += b.dx;
