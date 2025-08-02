@@ -8,35 +8,69 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      background: linear-gradient(135deg, #10131a 0%, #1a2233 100%);
+      background: linear-gradient(135deg, #181f1a 0%, #2a3d2d 100%);
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
     .main-content {
-      max-width: 600px;
+      max-width: 700px;
       margin: 48px auto;
-      background: #181c24;
+      background: #1a231a;
       border-radius: 18px;
       box-shadow: 0 4px 24px #0006;
       padding: 40px 32px 32px 32px;
     }
-    h1 {
-      text-align: center;
-      color: #66d4ff;
+    .header-modern {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 32px;
+      gap: 8px;
+    }
+    .header-modern .icon {
+      font-size: 3rem;
+      color: #ff4d4d;
+      animation: pulse 1.5s infinite alternate;
+      filter: drop-shadow(0 0 8px #ff4d4d88);
+    }
+    @keyframes pulse {
+      to {
+        color: #ff1e1e;
+        filter: drop-shadow(0 0 16px #ff1e1ecc);
+      }
+    }
+    .header-modern .title {
+      font-size: 2.2rem;
+      font-weight: 800;
       letter-spacing: 2px;
-      font-weight: 700;
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-shadow: 0 2px 16px #ff4d4d33;
+      margin: 0;
+      padding: 0;
+    }
+    .header-modern .subtitle {
+      color: #b3ffb3;
+      font-size: 1.1rem;
+      margin-top: 2px;
+      margin-bottom: 0;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-align: center;
     }
     .form-box {
-      background: #13161d;
+      background: #18281a;
       padding: 28px 24px;
       border-radius: 14px;
       box-shadow: 0 2px 8px #0003;
       margin-bottom: 32px;
     }
     label {
-      color: #b3e0ff;
+      color: #b3ffb3;
       font-size: 1.1em;
       font-weight: 500;
       margin-bottom: 8px;
@@ -47,22 +81,22 @@
       padding: 12px;
       margin: 12px 0 16px 0;
       border-radius: 8px;
-      border: 1.5px solid #222c3c;
-      background: #181c24;
-      color: #66d4ff;
+      border: 1.5px solid #223c2c;
+      background: #1a231a;
+      color: #ff4d4d;
       font-size: 1em;
       outline: none;
       transition: border 0.2s;
     }
     #urlInput:focus {
-      border: 1.5px solid #66d4ff;
-      background: #15181f;
+      border: 1.5px solid #ff4d4d;
+      background: #18281a;
     }
     button {
       padding: 10px 28px;
       border: none;
       border-radius: 8px;
-      background: linear-gradient(90deg, #66d4ff 0%, #1e90ff 100%);
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
       color: #181c24;
       font-weight: bold;
       font-size: 1em;
@@ -71,7 +105,7 @@
       transition: background 0.2s, color 0.2s;
     }
     button:hover {
-      background: linear-gradient(90deg, #1e90ff 0%, #66d4ff 100%);
+      background: linear-gradient(90deg, #2ecc40 0%, #ff4d4d 100%);
       color: #fff;
     }
     #resultado {
@@ -79,47 +113,155 @@
       color: #fff;
       word-break: break-all;
       font-size: 1.1em;
-      background: #10131a;
+      background: #181f1a;
       padding: 14px;
       border-radius: 8px;
-      border: 1px solid #222c3c;
+      border: 1px solid #223c2c;
       min-height: 24px;
     }
-    a {
+    a.back-link {
       display: block;
       text-align: center;
       margin-top: 32px;
-      color: #66d4ff;
+      color: #ff4d4d;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
-    a:hover {
-      color: #1e90ff;
+    a.back-link:hover {
+      color: #2ecc40;
       text-decoration: underline;
+    }
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #ff4d4d 0%, #2ecc40 100%);
+      color: #181c24;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 4px 24px #0006;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toast.show {
+      opacity: 1;
+    }
+    @media (max-width: 600px) {
+      .main-content {
+        padding: 10px 0 10px 0;
+      }
+      .form-box {
+        padding: 18px 6px;
+      }
     }
   </style>
 </head>
 <body>
+  <canvas id="bg-balls"></canvas>
   <div class="main-content">
-    <h1><i class="fas fa-link"></i> Loadstrings</h1>
+    <div class="header-modern">
+      <span class="icon"><i class="fas fa-link"></i></span>
+      <h1 class="title">Loadstrings</h1>
+      <span class="subtitle">Gere seu loadstring para Roblox facilmente!</span>
+    </div>
     <div class="form-box">
       <label for="urlInput">Cole a URL do seu script:</label>
       <input id="urlInput" type="text" placeholder="https://exemplo.com/seuscript.lua">
       <button onclick="gerarLoadstring()">Gerar Loadstring</button>
+      <button onclick="copiarLoadstring()" style="margin-left:10px;"><i class="fas fa-copy"></i> Copiar</button>
       <div id="resultado"></div>
     </div>
-    <a href="../index.html"><i class="fas fa-arrow-left"></i> Voltar para o início</a>
+    <a class="back-link" href="../index.html"><i class="fas fa-arrow-left"></i> Voltar para o início</a>
   </div>
+  <div id="toast"></div>
   <script>
+    // Fundo animado de bolinhas vermelhas e verdes
+    const canvas = document.getElementById('bg-balls');
+    const ctx = canvas.getContext('2d');
+    let balls = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    function createBalls() {
+      balls = [];
+      for (let i = 0; i < 32; i++) {
+        const isRed = Math.random() > 0.5;
+        balls.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: 8 + Math.random() * 12,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5,
+          alpha: 0.18 + Math.random() * 0.22,
+          color: isRed ? "rgba(255,77,77," : "rgba(46,204,64,"
+        });
+      }
+    }
+    createBalls();
+    window.addEventListener('resize', createBalls);
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const b of balls) {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, 2 * Math.PI);
+        ctx.fillStyle = b.color + b.alpha + ")";
+        ctx.shadowColor = b.color.replace("rgba(", "rgba(").replace(",", ",") + "1)";
+        ctx.shadowBlur = 16;
+        ctx.fill();
+        b.x += b.dx;
+        b.y += b.dy;
+        if (b.x < -b.r) b.x = canvas.width + b.r;
+        if (b.x > canvas.width + b.r) b.x = -b.r;
+        if (b.y < -b.r) b.y = canvas.height + b.r;
+        if (b.y > canvas.height + b.r) b.y = -b.r;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+    canvas.style.position = "fixed";
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.zIndex = "-1";
+    canvas.style.pointerEvents = "none";
+
     function gerarLoadstring() {
       const url = document.getElementById('urlInput').value.trim();
       const resultado = document.getElementById('resultado');
       if (!url) {
-        resultado.innerHTML = "<span style='color:#ff6666;'>Por favor, insira uma URL.</span>";
+        resultado.innerHTML = "<span style='color:#ff4d4d;'>Por favor, insira uma URL.</span>";
         return;
       }
       resultado.innerHTML = `<code>loadstring(game:HttpGet("${url}"))()</code>`;
+    }
+
+    function copiarLoadstring() {
+      const resultado = document.getElementById('resultado');
+      const code = resultado.querySelector('code');
+      if (code) {
+        navigator.clipboard.writeText(code.innerText).then(function() {
+          showToast('Loadstring copiado!');
+        });
+      } else {
+        showToast('Gere um loadstring primeiro!');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.className = 'show';
+      setTimeout(() => {
+        toast.className = toast.className.replace('show', '');
+      }, 3000);
     }
   </script>
 </body>
